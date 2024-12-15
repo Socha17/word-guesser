@@ -1,0 +1,58 @@
+<!-- page.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <meta charset="UTF-8" />
+  <title>Word Scramble Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <div class="header">
+      <div class="user-info">
+        <h2 id="username">Guest</h2>
+        <p>Round: <span id="round">1</span></p>
+        <p>Attempts Left: <span id="attemptsLeft">3</span></p>
+      </div>
+      <div class="timer-container">
+        <svg class="timer-svg" width="80" height="80">
+          <circle class="timer-bg" cx="40" cy="40" r="36"></circle>
+          <circle class="timer-circle" cx="40" cy="40" r="36"></circle>
+        </svg>
+        <div class="timer-text">
+          <span id="timer">20</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="points-container">
+      <p>Points: <span id="points">0</span></p>
+    </div>
+    <!-- Instruction text -->
+    <div class="instruction">
+      <p>What is the scrambled word?</p>
+    </div>
+
+    <div class="scrambled-word-container">
+      <div id="scrambledWord" class="scrambled-word">SCRAMBLED</div>
+    </div>
+    <div id="optionsContainer" class="options-container"></div>
+    <div id="message" class="message"></div>
+    <button id="nextRoundButton" style="display: none;">Next Round</button>
+
+    <!-- Game Over Overlay -->
+    <div id="gameOverOverlay" class="overlay" style="display: none;">
+      <div class="overlay-content">
+        <p id="gameOverMessage" class="game-over-message">Game Over!</p>
+        <button id="restartButton">Restart Game</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/javascript" src="script.js"></script>
+</body>
+</html>

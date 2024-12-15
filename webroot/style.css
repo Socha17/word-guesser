@@ -1,0 +1,239 @@
+/* style.css */
+
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+  background-image: url('images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.game-container {
+  position: relative; /* Ensure overlay is positioned correctly */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(26, 26, 26, 0); /* Fully transparent background */
+  border-radius: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-info {
+  text-align: left;
+}
+
+.user-info h2 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #ffffff; /* Ensure text is white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added drop shadow */
+}
+
+.user-info p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #ffffff; /* Ensure text is white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added drop shadow */
+}
+
+.timer-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.timer-svg {
+  transform: rotate(-90deg);
+}
+
+.timer-bg,
+.timer-circle {
+  fill: none;
+  stroke-width: 8;
+}
+
+.timer-bg {
+  stroke: #444;
+}
+
+.timer-circle {
+  stroke: #4E826C; /* Updated color */
+  stroke-dasharray: 226.19; /* 2 * pi * 36 */
+  stroke-dashoffset: 0; /* Start fully green */
+  transition: stroke-dashoffset linear; /* Transition duration is set dynamically */
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.timer-text span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff; /* Ensure text is white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added drop shadow */
+}
+
+.points-container {
+  text-align: center;
+  font-size: 16px;
+  margin: 0;
+  color: #ffffff; /* Set text color to white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added drop shadow */
+}
+.instruction {
+  text-align: center;
+  font-size: 24px;
+  margin: 5px 0 10px 0;
+  color: #ffffff; /* Set text color to white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added drop shadow */
+}
+
+.scrambled-word-container {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.scrambled-word {
+  font-size: 48px;
+  letter-spacing: 0.2em;
+  color: #4e826c; /* Set text color to white */
+}
+
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.option-button {
+  font-size: 18px;
+  padding: 15px 25px;
+  margin: 5px;
+  flex: 1 1 calc(25% - 20px); /* 4 buttons per row */
+  max-width: calc(25% - 20px);
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Drop shadow */
+}
+
+.option-button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.option-button:active {
+  transform: scale(0.95);
+}
+
+.message {
+  text-align: center;
+  margin: 10px auto;
+  font-size: 20px;
+  color: #ffffff; /* Changed text color to white */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Added drop shadow */
+  max-width: 800px;
+}
+
+/* Combined selectors for Next Round and Restart buttons */
+#nextRoundButton,
+#restartButton {
+  display: block;
+  margin: 10px auto;
+  font-size: 18px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Drop shadow */
+}
+
+#nextRoundButton:hover,
+#restartButton:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+#nextRoundButton:active,
+#restartButton:active {
+  transform: scale(0.95);
+}
+
+/* Overlay styles */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Ensure it appears above other elements */
+}
+
+.overlay-content {
+  text-align: center;
+}
+
+.game-over-message {
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Style the Restart Button within the overlay */
+#restartButton {
+  font-size: 24px;
+  padding: 15px 30px;
+  /* Styles inherited from combined selectors */
+}
+
+#restartButton:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+#restartButton:active {
+  transform: scale(0.95);
+}
+
+/* Adjustments for better layout */
+.game-container {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
